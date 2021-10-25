@@ -1,2 +1,2 @@
 # NvidiaGPUServerWebMonitor
-Monitor GPU, CPU, RAM and storage load at your Deep Learning server from a comprehensive web interface
+Monitor GPU, CPU, RAM and storage load for your Deep Learning server with standard Linux tools from a comprehensive web interface
