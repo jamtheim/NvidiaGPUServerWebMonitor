@@ -101,6 +101,9 @@ def getAndStoreData(serverName, hostInfoDict):
     # Get the most common username of the top process regarding CPU usage. Top is by default sorted on CPU usage.
     # This way we get the user who has the most number of active threads. Extract the n first rows
     sh_stdin, ssh_topUser, ssh_stderr=ssh.exec_command(" top -b -n 1 | head -n 38 ") # 8 rows header, and 30 rows of activety. 
+    # Get CPU hardware information 
+    sh_stdin, ssh_CPUhw, ssh_stderr=ssh.exec_command(" grep 'model name' /proc/cpuinfo | uniq | cut -d':' -f2- | xargs ") 
+    
     # Read lines and collect them in a topStringLong
     topStringLong = '' 
     for line in ssh_topUser.readlines():
@@ -121,6 +124,9 @@ def getAndStoreData(serverName, hostInfoDict):
         e.write("<pre><strong><big>" + serverName + "</pre></strong></big>\n")
         # OS version and kernel version
         for line in ssh_ver.readlines():
+            e.write("<pre>" + line + "</pre>\n")
+        # CPU hardware
+        for line in ssh_CPUhw.readlines():
             e.write("<pre>" + line + "</pre>\n")
         # Heaviest user
         e.write("<pre>" + 'Current heaviest user: ' + topUser + "</pre>\n")
