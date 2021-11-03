@@ -4,6 +4,6 @@ To get started:
 - Set up a python virtual environment, see python script for needed packages. 
 - Edit python script with your ip adressess and credentials
 - See bash file for starting python script within the python virtual environment. 
-- Enter your WWW adress in browser and watch the periodic updates :) 
+- Enter your web adress in a browser and watch the periodic updates :) 
 
 ![Screenshot](view.png)
